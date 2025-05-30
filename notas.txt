@@ -1,0 +1,12 @@
+Tareas
+
+- Revisar si funciona el login y dashboard
+
+-- Terminar login
+
+
+Notas por explicar
+-- Como se realiza la autenticacion manual
+-- Como se funciona el registro manual
+-- Explicar como funciona el logout manual.
+
