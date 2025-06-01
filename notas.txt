@@ -1,8 +1,43 @@
 Tareas
 
-- Revisar si funciona el login y dashboard
+- Crear el modelo de equipo con su migracion
+   -- ID (Me gustaria que fuera uuid)
+   -- Nombre del equipo
+   -- Descripcion
+   -- Foto
+   -- fechas
+Se crea la tarea. Listo
 
--- Terminar login
+- Crear el modelo de tarea con su migracion
+   -- ID (UUID)
+   -- titulo
+   -- Descripcion
+   -- fechas
+   -- id team
+   -- id user
+Listo. Se creo la tarea
+
+- Crear la relacion de 1:N (1 a muchos) entre equipos y tareas donde la tarea es la que tendra la llave foranea
+Listo. Fue mas sencillo de lo que parce
+
+- Crea la relacion de 1:N (1 a muchos) entre usuarios y tareas donde la tarea es la que tendra la llave foranea
+   -- Tengo que crear una migracion llamada create_team_user_table. Listo
+   -- Definir la relacion en los modelos. Listo
+   -- Creamos 2 usuarios y 1 equipo. Listo
+   -- asignamos los usuarios al equipo (Attach). Listo.
+      [https://wpwebinfotech.com/blog/laravel-many-to-many-relationship/?wp=google] Este articulo explica bien la relacion muchos a muchos
+
+   -- Ajusta la tabla pivote para que añada el tiempo por default de creacion. Listo es muy sencillo solo es agregar el metodo [->withTimestamps()], despues de belongsToMany()
+      Tambien se puede pasar argumentos cuando se usa el metodo attach 
+         $user->tasks()->attach($taskId, [
+         'role' => 'colaborador',
+         'created_at' => now(),
+         'updated_at' => now(),
+      ]);
+
+   -- Revisar como evitar que se dupliquen datos en esa tabla. Listo
+      1. Primero debemos colocar $table->unique([-Nombre de las columnas que deben unique])
+      2. Utilizar $user->tasks()->syncWithoutDetaching([$taskId]); Porque si ya teniamos una relacion, no la elimina, pero tampoco marca error, solo lo ignora
 
 
 Notas por explicar
@@ -10,3 +45,5 @@ Notas por explicar
 -- Como se funciona el registro manual
 -- Explicar como funciona el logout manual.
 
+
+cpxc-k2ie-2pm8

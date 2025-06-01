@@ -22,6 +22,12 @@ Route::middleware("guest")->group(function () {
         Route::get("/register", "index")->name("register");
         Route::post("/register", "store")->name("register.store");
     });
+
+    Route::get("/test", function(){
+        return response()->json([
+            "msg" => env("DB_CONNECTION")
+        ]);
+    });
 });
 
 
